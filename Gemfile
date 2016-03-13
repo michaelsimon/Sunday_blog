@@ -10,6 +10,7 @@ gem 'thin'
 gem 'shotgun'
 gem 'tux'
 gem 'capybara'
+gem "rails-erd"
 
 
 group :development do

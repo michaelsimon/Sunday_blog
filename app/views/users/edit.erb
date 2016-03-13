@@ -1,0 +1,8 @@
+<h1>Edit a user:</h1>
+
+<form action="/users/<%=@user.slug%>" method="post">
+  <input type="hidden" id="hidden" name="_method" value="patch"></input>
+  Name:<input type="text" name="name" value="<%=@user.name%>"></input>
+  <input type="submit" value="Edit"></input>
+  
+</form>

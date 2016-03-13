@@ -9,4 +9,6 @@ end
 
 # run ApplicationController
 # Load app
+use Rack::MethodOverride
+use UsersController
 run ApplicationController

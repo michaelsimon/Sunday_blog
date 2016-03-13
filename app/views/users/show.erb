@@ -1,0 +1,13 @@
+<h1>Show a user</h1>
+
+User: <%= @user.name %>
+<br><br>
+
+<form method="post" action="/users/<%= @user.slug %>/delete">
+<input type="hidden" id="hidden" name="_method" value="delete">
+<input type="submit" value="Delete User">
+</form><br><br>
+User posts: 
+<% @user.posts.each do |post| %>
+  <a href="/posts/<%=post.slug%>"><%= post.title %></a>
+  <% end %>
