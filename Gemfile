@@ -11,6 +11,7 @@ gem 'shotgun'
 gem 'tux'
 gem 'capybara'
 gem "rails-erd"
+gem 'bcrypt'
 
 
 group :development do

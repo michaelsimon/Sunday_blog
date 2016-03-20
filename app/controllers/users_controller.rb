@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   end
 
   get '/users/new' do
+    @error_message = params[:error]
     erb :'/users/new'
   end
 
@@ -31,10 +32,17 @@ class UsersController < ApplicationController
 
 
   post '/users' do
-    @user = User.create(name: params["name"])
-    @user.save
-    redirect to :"/users/#{@user.slug}"
-    #erb :'/users/show'
+    #redirect if not logged in
+
+    @user = User.new(params)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect :'/posts'
+    else
+      redirect '/users/new?error=invalid user'
+
+      
+    end
   end
 
   patch '/users/:slug' do
@@ -47,6 +55,26 @@ class UsersController < ApplicationController
     @user.save
     redirect to :"/users"
   end
+
+  get '/logout' do 
+    session.clear
+    redirect '/login'
+  end
+
+  get '/login' do 
+    erb :'/users/login'
+  end
+
+  post '/login' do 
+    @user = User.find_by(name: params[:name])
+    if @user && @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect '/posts'
+    else
+      redirect '/login'
+    end
+  end
+
 
 
 
