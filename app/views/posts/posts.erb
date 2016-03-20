@@ -1,0 +1,9 @@
+<h1> All posts</h1>
+
+<a href="/posts/new">Create a post</a>
+<bre><br>
+
+<% @posts.each do |post| %>
+  <%= post.title %>
+  <%= post.content %>
+  <% end %>

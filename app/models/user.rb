@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
   extend SlugModule::ClassMethods
   include SlugModule::InstanceMethods
  
+  has_secure_password
+
+  validates_presence_of :name
+
  has_many :topics, through: :posts
  has_many :posts
 

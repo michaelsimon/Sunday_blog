@@ -11,4 +11,5 @@ end
 # Load app
 use Rack::MethodOverride
 use UsersController
+use PostsController
 run ApplicationController
